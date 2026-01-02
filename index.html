@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Prithika 🎂</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            background: #000;
+        }
+
+        /* Landing Page with Gift Box */
+        #landing {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .gift-box {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gift-box:hover {
+            transform: scale(1.1);
+        }
+
+        .box-lid {
+            width: 100%;
+            height: 40px;
+            background: #ff6b9d;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            transition: transform 0.8s;
+            transform-origin: bottom;
+        }
+
+        .box-lid::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 100%;
+            background: #ff1744;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .box-body {
+            width: 100%;
+            height: 160px;
+            background: #ff1744;
+            border-radius: 0 0 10px 10px;
+            position: relative;
+        }
+
+        .box-body::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 100%;
+            background: #ff6b9d;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .gift-box.open .box-lid {
+            transform: rotateX(-90deg) translateY(-40px);
+        }
+
+        .click-text {
+            margin-top: 30px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Main Content Sections */
+        .section {
+            min-height: 100vh;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .section.active {
+            display: flex;
+        }
+
+        /* Section 1: Birth Memories */
+        #section1 {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        /* Section 2: Why Special */
+        #section2 {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+
+        /* Section 3: Reasons */
+        #section3 {
+            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+        }
+
+        /* Section 4: Future */
+        #section4 {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        /* Final Section - FIT TO SCREEN */
+        #final {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        #final.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .typewriter {
+            font-size: 1.3em;
+            line-height: 1.8;
+            color: #333;
+            overflow: hidden;
+            border-right: 3px solid #667eea;
+            white-space: nowrap;
+            animation: typing 4s steps(40) 0.5s forwards, blink 0.75s step-end infinite;
+            display: inline-block;
+            max-width: 100%;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .next-btn {
+            margin-top: 40px;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: bold;
+        }
+
+        .next-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Reason Cards */
+        .reason-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            transform: scale(0);
+            animation: popIn 0.5s forwards;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        @keyframes popIn {
+            to { transform: scale(1); }
+        }
+
+        .reason-card h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #764ba2;
+        }
+
+        .reason-card p {
+            font-size: 1.3em;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .reveal-btn {
+            padding: 12px 30px;
+            font-size: 1.1em;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff1744 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .reveal-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ff6b9d;
+            position: absolute;
+            animation: confetti-fall 3s linear;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Birthday Cake Animation - REDUCED SIZE */
+        .cake-container {
+            margin: 10px 0;
+        }
+
+        .cake {
+            font-size: 50px;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Final Message - REDUCED SIZE */
+        .final-message {
+            font-size: 1.8em;
+            color: white;
+            text-align: center;
+            margin: 15px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .name-glow {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #fff 0%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.5); }
+        }
+
+        /* Final Section Content Box - REDUCED SIZE */
+        #final .content-box {
+            padding: 20px;
+            max-width: 600px;
+        }
+
+        #final .content-box h2 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        #final .content-box p {
+            font-size: 1.1em;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .typewriter { font-size: 1em; }
+            .content-box { padding: 20px; }
+            .gift-box { width: 150px; height: 150px; }
+            .box-lid { height: 30px; }
+            .box-body { height: 120px; }
+            .click-text { font-size: 18px; }
+            
+            /* Final Section Mobile */
+            .cake { font-size: 40px; }
+            .final-message { font-size: 1.3em; margin: 10px 0; }
+            .name-glow { font-size: 1.8em; }
+            #final .content-box { padding: 15px; }
+            #final .content-box h2 { font-size: 1.2em; }
+            #final .content-box p { font-size: 0.95em; }
+        }
+
+        /* Hearts Background */
+        .heart {
+            position: fixed;
+            font-size: 30px;
+            opacity: 0;
+            animation: float-heart 6s infinite;
+        }
+
+        @keyframes float-heart {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landing">
+        <div class="stars"></div>
+        <div class="gift-box" id="giftBox">
+            <div class="box-lid"></div>
+            <div class="box-body"></div>
+        </div>
+        <div class="click-text">Click the Gift! 🎁</div>
+    </div>
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="nanbiye.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Section 1: Birth -->
+    <div id="section1" class="section">
+        <div class="content-box">
+            <h1>🎈 The Day You Were Born 🎈</h1>
+            <p class="typewriter" id="text1"></p>
+            <button class="next-btn" onclick="nextSection(2)">Continue ✨</button>
+        </div>
+    </div>
+
+    <!-- Section 2: Why Special -->
+    <div id="section2" class="section">
+        <div class="content-box">
+            <h1>💖 Why You're Special 💖</h1>
+            <p class="typewriter" id="text2"></p>
+            <button class="next-btn" onclick="nextSection(3)">Tell Me More 💕</button>
+        </div>
+    </div>
+
+    <!-- Section 3: Reasons -->
+    <div id="section3" class="section">
+        <div class="content-box" style="max-width: 900px;">
+            <h1>✨ You're My Bestest Friend ✨</h1>
+            <div id="reasonsContainer"></div>
+            <button class="reveal-btn" id="revealBtn" onclick="revealReason()">Click for Next Reason 💝</button>
+            <button class="next-btn" id="continueBtn" onclick="nextSection(4)" style="display:none;">Continue to Future 🌟</button>
+        </div>
+    </div>
+
+    <!-- Section 4: Future -->
+    <div id="section4" class="section">
+        <div class="content-box">
+            <h1>🔮 Future Wishes for You 🔮</h1>
+            <p class="typewriter" id="text4"></p>
+            <button class="next-btn" onclick="nextSection(5)">Final Surprise! 🎉</button>
+        </div>
+    </div>
+
+    <!-- Final Section -->
+    <div id="final" class="section">
+        <div class="cake-container">
+            <div class="cake">🎂</div>
+        </div>
+        <div class="final-message">
+            Happy Birthday to My Bestest Friend<br>
+            <span class="name-glow">Prithika (Swty) MAA <br> 🥰🫂Nanbi❤️ </span>
+        </div>
+        <div class="content-box">
+            <h2>🎉 Stay Healthy & Happy 🎉</h2>
+            <p>
+                Always be with me, stay strong, and keep shining! 🌟<br>
+                I will always support you in everything! 💪❤️
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Create stars
+        const starsContainer = document.querySelector('.stars');
+        for (let i = 0; i < 50; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Gift box click
+        document.getElementById('giftBox').addEventListener('click', function() {
+            this.classList.add('open');
+            setTimeout(() => {
+                document.getElementById('landing').style.display = 'none';
+                nextSection(1);
+            }, 1000);
+        });
+
+        // Typewriter texts
+        const texts = {
+            1: "The world became a little brighter when you arrived! You brought joy, love, and endless smiles to everyone around you. 🌟",
+            2: "Maa, you're so special—you're extraordinary! Your kindness, your laughter, and your beautiful soul make this world a better place. 💖",
+            4: "I wish you endless happiness, incredible adventures, perfect health, and dreams that come true! May you always stay strong and keep spreading joy! ✨"
+        };
+
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.style.whiteSpace = 'normal';
+            element.style.borderRight = '3px solid #667eea';
+            element.textContent = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    element.style.borderRight = 'none';
+                }
+            }
+            type();
+        }
+
+        // Reasons to reveal
+        const reasons = [
+            { emoji: "😊", title: "You Make People Smile", text: "Your presence lights up every room! Your infectious laughter and positive energy brighten everyone's day." },
+            { emoji: "❤️", title: "You're My Bestest Friend", text: "Through thick and thin, you've been there. I'm so grateful to have you in my life. Always be with me! 🤗" },
+            { emoji: "🌟", title: "You're Unforgettable", text: "Once someone meets you, they never forget you. You leave a lasting impression on every heart!" },
+            { emoji: "💖", title: "You're Incredibly Kind", text: "Your heart is pure gold. You always think of others and spread kindness wherever you go." },
+            { emoji: "💪", title: "You're So Strong", text: "You face every challenge with courage and grace. Your strength inspires everyone around you!" }
+        ];
+
+        let currentReason = 0;
+
+        function revealReason() {
+            if (currentReason < reasons.length) {
+                const container = document.getElementById('reasonsContainer');
+                const card = document.createElement('div');
+                card.className = 'reason-card';
+                card.innerHTML = `
+                    <h2>${reasons[currentReason].emoji} ${reasons[currentReason].title}</h2>
+                    <p>${reasons[currentReason].text}</p>
+                `;
+                container.appendChild(card);
+                currentReason++;
+                
+                createHearts();
+                
+                if (currentReason >= reasons.length) {
+                    document.getElementById('revealBtn').style.display = 'none';
+                    document.getElementById('continueBtn').style.display = 'inline-block';
+                }
+            }
+        }
+
+        function nextSection(num) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(s => s.classList.remove('active'));
+            
+            let section;
+            if (num === 5) {
+                section = document.getElementById('final');
+            } else {
+                section = document.getElementById(`section${num}`);
+            }
+            
+            section.classList.add('active');
+            
+            if (texts[num]) {
+                setTimeout(() => {
+                    typeWriter(document.getElementById(`text${num}`), texts[num]);
+                }, 300);
+            }
+            
+            if (num === 5) {
+                setTimeout(() => {
+                    createConfetti();
+                    createHearts();
+                }, 500);
+            }
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function createConfetti() {
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    document.getElementById('final').appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 30);
+            }
+        }
+
+        function createHearts() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.textContent = '💖';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDelay = Math.random() * 2 + 's';
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 6000);
+                }, i * 100);
+            }
+        }
+    </script>
+    <script>
+const audio = document.getElementById("bgMusic");
+
+// set start & end time (in seconds)
+const START_TIME = 7;   // 1:12
+const END_TIME = 270;   // 4:30
+
+audio.addEventListener("loadedmetadata", () => {
+    audio.currentTime = START_TIME;
+});
+
+audio.addEventListener("timeupdate", () => {
+    if (audio.currentTime >= END_TIME) {
+        audio.currentTime = START_TIME;
+        audio.play();
+    }
+});
+
+// optional: start on user interaction (browser-safe)
+document.body.addEventListener("click", () => {
+    audio.play();
+}, { once: true });
+</script>
+</body>
+</html>
